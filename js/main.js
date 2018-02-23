@@ -8,7 +8,7 @@ $(function () {
 
     }
     Animation.prototype = {
-        step: 1,
+        step: 3,
         animating: false,
         next: function () {
             if (this.step >= $('.step').length) {

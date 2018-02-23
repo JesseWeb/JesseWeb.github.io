@@ -8,6 +8,7 @@ let browserSync = require('browser-sync')
 let reload = browserSync.reload;
 let cleanCSS = require('gulp-clean-css')
 let gulpSequence = require('gulp-sequence')
+const autoprefixer = require('gulp-autoprefixer');
 const path = require('path')
 
 gulp.task('jsUglify', function () {
@@ -31,8 +32,12 @@ gulp.task('cssMinify', function () {
         gulp.src('./style/main.css'),
         plumber(),
         sourcemaps.init(),
+        autoprefixer({
+            browsers: ['last 4 versions'],
+            cascade: false
+        }),
         cleanCSS({
-            compatibility: 'ie8'
+            // compatibility: 'ie8'
         }),
         sourcemaps.write('./maps'),
         gulp.dest('./static'),
