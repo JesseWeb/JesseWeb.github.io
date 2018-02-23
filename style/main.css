@@ -60,42 +60,42 @@ a{
         transform: rotateZ(0deg) translate(-50%, -50%)
     }
     30% {
-        transform: rotateZ(50deg) translate(-50%, -50%)
+        transform: rotateZ(50deg) translate3d(-50%, -50%,0)
     }
     50% {
-        transform: rotateZ(40deg) translate(-50%, -50%)
+        transform: rotateZ(40deg) translate3d(-50%, -50%,0)
     }
     70%, 80% {
-        transform: rotateZ(45deg) translate(-50%, -50%)
+        transform: rotateZ(45deg) translate3d(-50%, -50%,0)
     }
     83% {
-        transform: rotateZ(45deg) translate(-40%, -40%)
+        transform: rotateZ(45deg) translate3d(-40%, -40%,0)
     }
     85% {
-        transform: rotateZ(45deg) translate(-30%, -30%)
+        transform: rotateZ(45deg) translate3d(-30%, -30%,0)
     }
     88% {
-        transform: rotateZ(45deg) translate(-20%, -20%)
+        transform: rotateZ(45deg) translate3d(-20%, -20%,0)
     }
     90% {
-        transform: rotateZ(45deg) translate(0, 0)
+        transform: rotateZ(45deg) translate3d(0, 0,0)
     }
     100% {
-        transform: rotateZ(45deg) translate(2000px, 2000px);
+        transform: rotateZ(45deg) translate3d(2000px, 2000px,0);
         opacity: 0;
     }
 }
 
 @keyframes getBackHere {
     100% {
-        transform: rotateZ(0deg) translate(-50%, -50%);
+        transform: rotateZ(0deg) translate3d(-50%, -50%,0);
         opacity: 1
     }
     30% {
-        transform: rotateZ(45deg) translate(-10%, -10%)
+        transform: rotateZ(45deg) translate3d(-10%, -10%,0)
     }
     0% {
-        transform: rotateZ(45deg) translate(2000px, 2000px);
+        transform: rotateZ(45deg) translate3d(2000px, 2000px,0);
         opacity: 0
     }
 }
@@ -182,13 +182,18 @@ a{
 .container-small>div {
     font-size: 16px;
     flex:1;
-    text-align: center;
+    text-align: left;
+}
+.container-small>div:last-child:first-child{
+    margin-left: 40px;
 }
 .container-small>div:last-child{
     text-align: left;
+    flex:1;    
 }
 .container-small>div  >ul > li{
     margin-top: 10px;
+    line-height: 30px;
 }
 .container>div {
     font-size: 12px;
