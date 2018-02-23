@@ -63,46 +63,49 @@ a {
 
 @keyframes fallsDown {
     0% {
-        opacity: 1;
         transform: rotateZ(0deg) translate(-50%, -50%)
     }
-    30% {
-        transform: rotateZ(50deg) translate3d(-50%, -50%, 0)
+    10% {
+        transform: rotateZ(20deg) translate(-50%, -50%)
+    }
+    25% {
+        transform: rotateZ(50deg) translate(-50%, -50%)
     }
     50% {
-        transform: rotateZ(40deg) translate3d(-50%, -50%, 0)
+        transform: rotateZ(40deg) translate(-50%, -50%)
     }
     70%, 80% {
-        transform: rotateZ(45deg) translate3d(-50%, -50%, 0)
+        transform: rotateZ(45deg) translate(-50%, -50%)
     }
     83% {
-        transform: rotateZ(45deg) translate3d(-40%, -40%, 0)
+        opacity: 1;
+        transform: rotateZ(45deg) translate(-40%, -40%)
     }
     85% {
-        transform: rotateZ(45deg) translate3d(-30%, -30%, 0)
+        transform: rotateZ(45deg) translate(-30%, -30%)
     }
     88% {
-        transform: rotateZ(45deg) translate3d(-20%, -20%, 0)
+        transform: rotateZ(45deg) translate(-20%, -20%)
     }
     90% {
-        transform: rotateZ(45deg) translate3d(0, 0, 0)
+        transform: rotateZ(45deg) translate(0, 0)
     }
     100% {
-        transform: rotateZ(45deg) translate3d(2000px, 2000px, 0);
+        transform: rotateZ(45deg) translate(2000px, 2000px);
         opacity: 0;
     }
 }
 
 @keyframes getBackHere {
     100% {
-        transform: rotateZ(0deg) translate3d(-50%, -50%, 0);
+        transform: rotateZ(0deg) translate(-50%, -50%);
         opacity: 1
     }
     30% {
-        transform: rotateZ(45deg) translate3d(-10%, -10%, 0)
+        transform: rotateZ(45deg) translate(-10%, -10%)
     }
     0% {
-        transform: rotateZ(45deg) translate3d(2000px, 2000px, 0);
+        transform: rotateZ(45deg) translate(2000px, 2000px);
         opacity: 0
     }
 }
@@ -133,7 +136,9 @@ a {
     text-align: center;
     color: #fff;
 }
-
+.next:hover, .prev:hover{
+    opacity: .8
+}
 .prev {
     display: none;
 }
@@ -143,26 +148,31 @@ a {
 }
 
 .step1>div {
-    font-size: 100px;
     color: white;
     text-align: center;
     width: 100%;
     transform: translateY(-100%);
-    top: 0%;
+    top: 0;
     position: absolute;
     transition: all 1s;
     opacity: 0;
 }
 
 .step1>div>p {
+    font-size: 100px;
     margin: 0 auto;
     text-align: center;
     width: 100%;
     display: block;
     line-height: 100px;
-    ;
 }
+.subTitle{
+    position: absolute;
+    right: 15%;
+    margin-top: 50px;
+    font-size: 20px;
 
+}
 .step1 .fadeIn {
     top: 50%;
     transform: translateY(-50%);
@@ -254,9 +264,9 @@ a {
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
-    font-size: 16px;
+    font-size: 20px;
     color: #fff;
-    margin-top: 200px;
+    margin-top: 320px;
     flex-flow: row wrap;
     align-items: flex-start;
 }
@@ -297,6 +307,27 @@ a {
     width: 100%;
 }
 
+.step4>.container {
+    margin-top: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.step4>.container>div {
+    margin: 0 20px;
+}
+
+.step4>.container>div>.projectLogo {
+    width: 200px;
+    height: 200px;
+}
+.step4>.container>div>.projectLogo >img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
 @media screen and (max-width:1000px) {
     .step {
         border-radius: 0;
@@ -304,7 +335,7 @@ a {
     }
     .prev, .next {
         right: 14px;
-        font-size: 60px;
+        font-size: 40px;
     }
     .container {
         width: 100%;
@@ -313,7 +344,7 @@ a {
         font-size: 60px;
     }
     .next {
-        top: 85%;
+        top: 75%;
     }
     .container .item img {
         width: 50%;
@@ -343,6 +374,6 @@ a {
         margin-top: 30px;
     }
     .step3>.container>.skill ul {
-        min-width:170px;
+        min-width: 170px;
     }
 }

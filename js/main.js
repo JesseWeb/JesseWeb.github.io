@@ -8,7 +8,7 @@ $(function () {
 
     }
     Animation.prototype = {
-        step: 3,
+        step: 4,
         animating: false,
         next: function () {
             if (this.step >= $('.step').length) {
@@ -52,6 +52,22 @@ $(function () {
     $('.prev').click((e) => {
         animation.prev()
     })
+    $(window).on('mousewheel',function (e) {
+        e =e||window.event
 
+        if(e.originalEvent.wheelDelta){
+            if(e.originalEvent.wheelDelta===120){
+                animation.prev()
+            }else if(e.originalEvent.wheelDelta=== -120){
+                animation.next()
+            }
+        }else if(e.originalEvent.detail){
+            if(e.originalEvent.detail===-3){
+                animation.prev()
+            }else if(e.originalEvent.detail=== 3){
+                animation.next()
+            }
+        }
+  });
 
 })
