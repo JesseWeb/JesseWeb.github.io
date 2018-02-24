@@ -1,15 +1,15 @@
 $(function () {
     let Animation = function () {
-        $('.step1 > div').addClass('fadeIn')
+        $('.step1').addClass('active')
         $('.step').each((index, el) => {
             $(el).css({ "z-index": $('.step').length - index })
         })
 
-
     }
     Animation.prototype = {
-        step: 4,
+        step: 1,
         animating: false,
+        timer:null,
         next: function () {
             if (this.step >= $('.step').length) {
                 return
@@ -21,6 +21,16 @@ $(function () {
                 $('.step' + this.step).removeClass('getBackHere').addClass('fallsDown')
                 this.animating = true
                 this.step++
+                if (this.step == 3) {
+                    this.timer = setInterval(this.skillBlingbling, 2000)
+
+                }else{
+                    clearInterval(this.timer)
+                    this.timer = null
+                }
+                setTimeout(() => {
+                    this.autoAddActive()
+                }, 300)
                 setTimeout(() => {
                     this.animating = false
                     $('.prev').show()
@@ -28,6 +38,7 @@ $(function () {
             }
         },
         prev: function () {
+            let timer = null
             if (this.step <= 1) {
                 return
             }
@@ -36,6 +47,14 @@ $(function () {
                     $('.prev').hide()
                 }
                 this.step--
+                if (this.step == 3) {
+                    this.timer = setInterval(this.skillBlingbling, 2000)
+
+                }else{
+                    clearInterval(this.timer)
+                    this.timer = null
+                }
+                this.autoAddActive()
                 $('.step' + this.step).removeClass('fallsDown').addClass('getBackHere')
                 this.animating = true
                 setTimeout(() => {
@@ -44,6 +63,23 @@ $(function () {
                 }, 400)
             }
         },
+        autoAddActive() {
+            $('.step').removeClass('active')
+            $('.step' + this.step).addClass('active')
+        },
+        skillBlingbling() {
+            let liLen = $('.step3 .skill ul li').not('.skill-title').length
+            let i = Math.floor(Math.random() * liLen)
+            $('.step3 .skill ul li').not('.skill-title').removeClass('blingbling').parent().removeClass('pumpUp')
+            $('.step3 .skill ul li').not('.skill-title').eq(i).addClass('blingbling').parent().addClass('pumpUp')
+        },
+        caclPageIndex(page) {
+            if (this.step == page) {
+                return true
+            } else {
+                return false
+            }
+        }
     }
     let animation = new Animation()
     $('.next').click((e) => {
@@ -52,22 +88,22 @@ $(function () {
     $('.prev').click((e) => {
         animation.prev()
     })
-    $(window).on('mousewheel',function (e) {
-        e =e||window.event
+    $(window).on('mousewheel', function (e) {
+        e = e || window.event
 
-        if(e.originalEvent.wheelDelta){
-            if(e.originalEvent.wheelDelta===120){
+        if (e.originalEvent.wheelDelta) {
+            if (e.originalEvent.wheelDelta === 120) {
                 animation.prev()
-            }else if(e.originalEvent.wheelDelta=== -120){
+            } else if (e.originalEvent.wheelDelta === -120) {
                 animation.next()
             }
-        }else if(e.originalEvent.detail){
-            if(e.originalEvent.detail===-3){
+        } else if (e.originalEvent.detail) {
+            if (e.originalEvent.detail === -3) {
                 animation.prev()
-            }else if(e.originalEvent.detail=== 3){
+            } else if (e.originalEvent.detail === 3) {
                 animation.next()
             }
         }
-  });
+    });
 
 })

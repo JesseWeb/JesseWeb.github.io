@@ -136,9 +136,11 @@ a {
     text-align: center;
     color: #fff;
 }
-.next:hover, .prev:hover{
+
+.next:hover, .prev:hover {
     opacity: .8
 }
+
 .prev {
     display: none;
 }
@@ -147,7 +149,7 @@ a {
     top: 75%;
 }
 
-.step1>div {
+.step1>div,.step5 > p {
     color: white;
     text-align: center;
     width: 100%;
@@ -158,7 +160,7 @@ a {
     opacity: 0;
 }
 
-.step1>div>p {
+.step1>div>p ,.step5 > p{
     font-size: 100px;
     margin: 0 auto;
     text-align: center;
@@ -166,14 +168,15 @@ a {
     display: block;
     line-height: 100px;
 }
-.subTitle{
+
+.subTitle {
     position: absolute;
     right: 15%;
     margin-top: 50px;
     font-size: 20px;
-
 }
-.step1 .fadeIn {
+
+.active .fadeIn {
     top: 50%;
     transform: translateY(-50%);
     opacity: 1;
@@ -245,7 +248,31 @@ a {
 .container .item a {
     overflow: hidden;
 }
+.active .blingbling{
+    animation:blingbling 1s alternate infinite;
+}
+.active .pumpUp{
+    animation:pumpUp 1s alternate infinite;
+}
+@keyframes blingbling{
+    0%{
+        /* background-color: transparent; */
+        background-color: transparent;
+    }
+    100%{
+        /* background-color: #e8e8e5; */
+        background-color: #c583df;
+    }
+}
+@keyframes pumpUp{
+    0%{
+        transform: scale(1)
+    }
+    100%{
+        transform: scale(1.2)
 
+    }
+}
 .container .item img:hover {
     transform: rotate(360deg)
 }
@@ -266,7 +293,7 @@ a {
     justify-content: space-around;
     font-size: 20px;
     color: #fff;
-    margin-top: 320px;
+    margin-top: 15%;
     flex-flow: row wrap;
     align-items: flex-start;
 }
@@ -311,21 +338,74 @@ a {
     margin-top: 200px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
 }
 
-.step4>.container>div {
+.step4>.container>div{
+    flex: 1;
     margin: 0 20px;
+    text-align: center;
+    transform:translate(0,-1000px);
+    transition:1s all;
+}
+.step4>.container>div:nth-child(2) {
+    transform:translate(0,-2000px);
+}
+.step4>.container>div:nth-child(3){
+    transform:translate(0,-3000px);
+}
+.step4.active>.container>div{
+    transform: translate(0,0);
+}
+.step4>.container>div>.projectLogo {
+    display: inline-block;
+    width: 30%;
+    height: 30%;
+    min-height: 87.5px;
+    min-width: 87.5px;
 }
 
-.step4>.container>div>.projectLogo {
-    width: 200px;
-    height: 200px;
-}
-.step4>.container>div>.projectLogo >img{
+.step4>.container>div>.projectLogo>img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
+}
+.step4 .project{
+}
+.step4 .projectDesc {
+    margin-top: 20px;
+}
+
+.step4 .descTitle {
+    color: #fff;
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.step4 .descContent {
+    color: #fff;
+    text-align: left;
+    font-size: 20px;    
+    text-indent: 1em;
+    width: 60%;
+    margin: 0 auto;
+    overflow: hidden;
+    
+}
+.step5{
+    text-align: center;
+    font-size: 60px;
+    color: #fff;
+    line-height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+@media screen and (max-width:1680px) {
+    .step3>.container>.skill {
+        margin-top: 5%;
+    }
 }
 
 @media screen and (max-width:1000px) {
@@ -375,5 +455,12 @@ a {
     }
     .step3>.container>.skill ul {
         min-width: 170px;
+    }
+    .step4>.container>div>.projectLogo {
+        width: 70%;
+        height: 70%;
+    }
+    .step4 .descContent{
+        display: none;
     }
 }

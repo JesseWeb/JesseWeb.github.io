@@ -32,10 +32,7 @@ gulp.task('cssMinify', function () {
         gulp.src('./style/main.css'),
         plumber(),
         sourcemaps.init(),
-        autoprefixer({
-            browsers: ['last 4 versions'],
-            cascade: false
-        }),
+        autoprefixer(),
         cleanCSS({
             // compatibility: 'ie8'
         }),
