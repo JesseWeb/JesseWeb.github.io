@@ -44,7 +44,6 @@ gulp.task('cssMinify', function () {
     ])
 
 });
-
 function jsUglify(src) {
     let dist = path.relative(__dirname,'./static')
     pump([
@@ -67,7 +66,6 @@ function jsUglify(src) {
         }),
     ])
 }
-
 function cssMinify(src) {
     let dist = path.relative(__dirname,'./static')
     pump([
